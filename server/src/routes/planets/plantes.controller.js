@@ -1,10 +1,9 @@
-const { plantes } = require('../../models/plantes.model');
+const { getAllPlantes } = require('../../models/plantes.model');
 
-function getAllPlantes(req, res) {
-    console.log(plantes.length);
-    return res.status(200).json(plantes);
+function httpGetAllPlantes(req, res) {
+    return res.status(200).json(getAllPlantes());
 }
 
 module.exports = {
-    getAllPlantes
+    httpGetAllPlantes
 }

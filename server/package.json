@@ -6,6 +6,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
+    "test": "jest",
     "watch": "set PORT=5000&&nodemon src/server.js",
     "start": "set PORT=5000&&node src/server.js"
   },
@@ -15,5 +16,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3"
+  }
 }

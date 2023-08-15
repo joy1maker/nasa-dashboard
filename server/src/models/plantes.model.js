@@ -37,7 +37,10 @@ function parseCsvFile() {
     });
 }
 
+function getAllPlantes() {
+    return results;
+}
 module.exports = {
     parseCsvFile,
-    plantes: results
+    getAllPlantes
 }
