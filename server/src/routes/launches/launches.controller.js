@@ -1,5 +1,5 @@
 const { getAllLaunches, addNewLaunch, abortLaunch, existLaunchWithId } = require('../../models/launches.model');
-const { hasEmptyValues, isDateValid } = require("../../assets/helpers");
+const { isDateValid } = require("../../assets/helpers");
 
 
 
@@ -8,11 +8,13 @@ function httpGetAllLaunches(req, res) {
 }
 function httpAddNewLaunch(req, res) {
     const launch = req.body;
-    if (hasEmptyValues(launch)) {
+    if (!launch.mission || !launch.rocket || !launch.launchDate
+        || !launch.target) {
         return res.status(400).json({
-            'error': "missing required launch properties"
-        })
+            error: 'Missing required launch property',
+        });
     }
+
     launch.launchDate = new Date(launch.launchDate);
     if (!isDateValid(launch.launchDate)) {
         return res.status(400).json({
